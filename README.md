@@ -1,21 +1,35 @@
 # hello-world-ruby-pg
 
-This repo has a "Hello World" Ruby application that uses the [pg](https://rubygems.org/gems/pg) library to talk to [CockroachDB](https://www.cockroachlabs.com/docs/stable/).
+This repo has a "Hello World" Ruby application that uses the [pg](https://rubygems.org/gems/pg) library to talk to [CockroachCloud](CockroachCloud).
 
-Prerequisites: 
+Prerequisites:
 
-    $ bundle install
+- Install `libpq`. For example, on OS X using Homebrew:
+  ```shell
+  brew install libpq
+  ```
+- Configure `bundle` to use `libpq`.
+  ```shell
+  bundle config --local build.pg --with-opt-dir="/usr/local/opt/libpq"
+  ```
+  Set `--with-opt-dir` to the location of `libpq` for your OS.
+- Install the bundle:
+  ```shell
+  bundle install
+  ```
+- A [running CockroachCloud cluster](https://www.cockroachlabs.com/docs/cockroachcloud/create-a-free-cluster.html).
 
 To run the code:
 
-1. Start a [local, insecure CockroachDB cluster](https://www.cockroachlabs.com/docs/stable/start-a-local-cluster.html).
+1. [Connect to the CockroachCloud cluster](https://www.cockroachlabs.com/docs/cockroachcloud/connect-to-a-free-cluster.html).
 
-2. Create a `bank` database and `maxroach` user as described in [Build a Ruby app with CockroachDB](https://www.cockroachlabs.com/docs/stable/build-a-ruby-app-with-cockroachdb.html#insecure).
-
-3. From the [SQL client](https://www.cockroachlabs.com/docs/stable/cockroach-sql.html): `GRANT ALL ON DATABASE bank TO maxroach`
-
-4. In your terminal, from this directory:
-
+1. Create a `bank` database using the SQL console.
+```sql
+CREATE DATABASE bank;
 ```
-$ ruby main.rb
+
+1. In your terminal, from the `hello-world-ruby-pg` directory, run the application:
+
+```shell
+ruby main.rb
 ```

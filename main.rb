@@ -83,13 +83,17 @@ def run_transaction(conn, op)
 end
 
 def main()
+  # BEGIN connect
   conn = PG.connect(
-    user: 'maxroach',
-    dbname: 'bank',
-    host: 'localhost',
+    user: '{username}',
+    password: '{password}',
+    dbname: '{cluster_name}.bank',
+    host: '{globalhost}',
     port: 26257,
-    sslmode: 'disable'
+    sslmode: 'verify-full',
+    sslrootcert: '{path to the CA certificate}'
   )
+  # END connect
 
   # Set to true to test the retry loop logic in `run_transaction'.
   $force_retry = false
