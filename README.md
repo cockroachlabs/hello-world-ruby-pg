@@ -2,20 +2,37 @@
 
 This repo has a "Hello World" Ruby application that uses the [pg](https://rubygems.org/gems/pg) library to talk to [CockroachDB](https://www.cockroachlabs.com/docs/stable/).
 
-Prerequisites: 
+Prerequisites:
 
-    $ bundle install
+- Install `libpq`. For example, on OS X using Homebrew:
+    ```shell
+    brew install libpq
+    ```
+- Configure `bundle` to use `libpq`.
+    ```shell
+    bundle config --local build.pg --with-opt-dir="/usr/local/opt/libpq"
+    ```
+    Set `--with-opt-dir` to the location of `libpq` for your OS.
+- Install the bundle:
+    ```shell
+    bundle install
+    ```
+- A local [CockroachDB demo cluster](https://www.cockroachlabs.com/docs/stable/cockroach-demo)
 
-To run the code:
+  To run the code:
 
-1. Start a [local, insecure CockroachDB cluster](https://www.cockroachlabs.com/docs/stable/start-a-local-cluster.html).
+  1. Start an empty [demo CockroachDB cluster](https://www.cockroachlabs.com/docs/stable/cockroach-demo).
 
-2. Create a `bank` database and `maxroach` user as described in [Build a Ruby app with CockroachDB](https://www.cockroachlabs.com/docs/stable/build-a-ruby-app-with-cockroachdb.html#insecure).
+      ~~~shell
+      cockroach demo --empty
+      ~~~
 
-3. From the [SQL client](https://www.cockroachlabs.com/docs/stable/cockroach-sql.html): `GRANT ALL ON DATABASE bank TO maxroach`
+  2. Create a `bank` database and `maxroach` user as described in [Build a Ruby app with CockroachDB](https://www.cockroachlabs.com/docs/stable/build-a-ruby-app-with-cockroachdb-activerecord.html).
 
-4. In your terminal, from this directory:
+  3. From the [SQL client](https://www.cockroachlabs.com/docs/stable/cockroach-sql.html): `GRANT ALL ON DATABASE bank TO maxroach`
 
-```
-$ ruby main.rb
-```
+  4. In your terminal, run the code from the `hello-world-ruby-pg` directory:
+
+      ```shell
+      ruby main.rb
+      ```
