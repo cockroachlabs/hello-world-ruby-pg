@@ -19,31 +19,31 @@ Prerequisites:
     ```
 - A local [CockroachDB demo cluster](https://www.cockroachlabs.com/docs/stable/cockroach-demo)
 
-  To run the code:
+To run the code:
 
-  1. Start an empty [demo CockroachDB cluster](https://www.cockroachlabs.com/docs/stable/cockroach-demo).
+1. Start an empty [demo CockroachDB cluster](https://www.cockroachlabs.com/docs/stable/cockroach-demo).
 
-      ~~~shell
-      cockroach demo --empty
-      ~~~
+    ~~~shell
+    cockroach demo --empty
+    ~~~
 
-  1. Create a `bank` database and `maxroach` user as described in [Build a Ruby app with CockroachDB](https://www.cockroachlabs.com/docs/stable/build-a-ruby-app-with-cockroachdb-activerecord.html).
+1. Create a `bank` database and `maxroach` user as described in [Build a Ruby app with CockroachDB](https://www.cockroachlabs.com/docs/stable/build-a-ruby-app-with-cockroachdb-activerecord.html).
 
-  1. From the [SQL client](https://www.cockroachlabs.com/docs/stable/cockroach-sql.html): `GRANT ALL ON DATABASE bank TO maxroach`
+1. From the [SQL client](https://www.cockroachlabs.com/docs/stable/cockroach-sql.html): `GRANT ALL ON DATABASE bank TO maxroach`
 
-  1. Modify the connection parameters in `main.rb` to set the username, password, and port.
+1. Modify the connection parameters in `main.rb` to set the username, password, and port.
 
-      ```ruby
-      user: '{username}',
-      password: '{password}',
-      dbname: 'bank',
-      host: 'localhost',
-      port: {port},
-      sslmode: 'verify'
-      ```
+    ```ruby
+    user: '{username}',
+    password: '{password}',
+    dbname: 'bank',
+    host: 'localhost',
+    port: {port},
+    sslmode: 'verify'
+    ```
 
-  1. In your terminal, run the code from the `hello-world-ruby-pg` directory:
+1. In your terminal, run the code from the `hello-world-ruby-pg` directory:
 
-      ```shell
-      ruby main.rb
-      ```
+    ```shell
+    ruby main.rb
+    ```
