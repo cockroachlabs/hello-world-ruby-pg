@@ -85,11 +85,12 @@ end
 def main()
   # BEGIN connect
   conn = PG.connect(
-    user: 'maxroach',
+    user: '{username}',
+    password: '{password}',
     dbname: 'bank',
     host: 'localhost',
-    port: 26257,
-    sslmode: 'disable'
+    port: {port},
+    sslmode: 'verify'
   )
   # END connect
 
