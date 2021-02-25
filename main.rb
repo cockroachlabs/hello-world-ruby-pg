@@ -90,7 +90,7 @@ def main()
     dbname: 'bank',
     host: 'localhost',
     port: {port},
-    sslmode: 'verify'
+    sslmode: 'require'
   )
   # END connect
 
