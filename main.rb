@@ -84,14 +84,7 @@ end
 
 def main()
   # BEGIN connect
-  conn = PG.connect(
-    user: '{username}',
-    password: '{password}',
-    dbname: 'bank',
-    host: 'localhost',
-    port: {port},
-    sslmode: 'require'
-  )
+  conn = PG.connect(ENV['DATABASE_URL'])
   # END connect
 
   # Set to true to test the retry loop logic in `run_transaction'.
