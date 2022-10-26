@@ -2,6 +2,12 @@
 
 require 'pg'
 
+def set_app_name(conn)
+  conn.transaction do |txn|
+    txn.exec('SET application_name = docs_simplecrud_pg')
+  end
+end
+
 def create_accounts(conn)
   conn.transaction do |txn|
     txn.exec('CREATE TABLE IF NOT EXISTS accounts (id INT PRIMARY KEY, balance INT)')
@@ -101,7 +107,8 @@ def main()
     amt = 100
     from_id = 1
     to_id = 2
-
+    
+    set_app_name(conn)
     create_accounts(conn)
     print_balances(conn)
 
